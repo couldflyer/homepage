@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { defineConfig, loadEnv } from "vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "path";
@@ -7,8 +6,8 @@ import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import viteCompression from "vite-plugin-compression";
+import json from '@rollup/plugin-json'; // 引入 Rollup JSON 插件
 
-// https://vitejs.dev/config/
 export default ({ mode }) =>
   defineConfig({
     plugins: [
@@ -90,6 +89,7 @@ export default ({ mode }) =>
         },
       }),
       viteCompression(),
+      json() // 使用 Rollup JSON 插件
     ],
     server: {
       port: "3000",
